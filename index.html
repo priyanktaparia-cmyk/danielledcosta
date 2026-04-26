@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Table — Private Catering Bangalore</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF4E8;
+    --warm-white: #FDF9F2;
+    --espresso: #1E1008;
+    --sienna: #8C3A1A;
+    --gold: #B8872A;
+    --sage: #6B7B5E;
+    --blush: #E8D5C0;
+    --dark-cream: #F0E6D0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--espresso);
+    overflow-x: hidden;
+    font-weight: 300;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    mix-blend-mode: multiply;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--warm-white);
+  }
+  .nav-cta {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-white);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 2px;
+    transition: border-color 0.3s;
+  }
+  .nav-cta:hover { border-color: white; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 680px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 60px 80px;
+    background: var(--espresso);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 70% 40%, rgba(140,58,26,0.45) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(184,135,42,0.2) 0%, transparent 50%),
+      linear-gradient(160deg, #1E1008 0%, #2E1A0E 50%, #1A0C06 100%);
+  }
+  /* Decorative plate rings */
+  .hero-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(184,135,42,0.15);
+    top: 50%; left: 62%;
+    transform: translate(-50%, -50%);
+  }
+  .hero-ring:nth-child(1) { width: 320px; height: 320px; }
+  .hero-ring:nth-child(2) { width: 520px; height: 520px; border-color: rgba(184,135,42,0.08); }
+  .hero-ring:nth-child(3) { width: 720px; height: 720px; border-color: rgba(184,135,42,0.05); }
+
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(184,135,42,0.4);
+    padding: 6px 16px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s 0.2s both;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--warm-white);
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.4s both;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    color: rgba(253,249,242,0.6);
+    line-height: 1.8;
+    max-width: 480px;
+    animation: fadeUp 0.8s 0.6s both;
+  }
+  .hero-stat-bar {
+    display: flex;
+    gap: 48px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    animation: fadeUp 0.8s 0.8s both;
+  }
+  .hero-stat span {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--warm-white);
+    font-weight: 300;
+  }
+  .hero-stat p {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(253,249,242,0.45);
+    margin-top: 4px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 60px; }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--espresso);
+  }
+  .section-title em { font-style: italic; color: var(--sienna); }
+
+  /* ── INTRO ── */
+  .intro {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .intro-left { position: relative; }
+  .intro-img-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--dark-cream), var(--blush));
+    position: relative;
+    overflow: hidden;
+  }
+  .intro-img-frame::before {
+    content: '🍽';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    opacity: 0.15;
+  }
+  .img-caption {
+    position: absolute;
+    bottom: -1px; left: -1px; right: -1px;
+    background: var(--espresso);
+    color: var(--warm-white);
+    padding: 20px 24px;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+  }
+  .img-caption strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .accent-border {
+    position: absolute;
+    top: 20px; left: 20px; right: -20px; bottom: -20px;
+    border: 1px solid var(--gold);
+    opacity: 0.3;
+    z-index: -1;
+  }
+  .intro-text p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #3D2010;
+    margin-bottom: 20px;
+  }
+  .intro-text p.lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--sienna);
+    margin-bottom: 28px;
+  }
+
+  /* ── SPECIALTIES ── */
+  .specialties { background: var(--espresso); }
+  .specialties .section-label { color: var(--gold); }
+  .specialties .section-title { color: var(--warm-white); }
+  .specialties .section-title em { color: var(--gold); }
+
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    margin-top: 60px;
+    background: rgba(255,255,255,0.06);
+  }
+  .spec-card {
+    background: var(--espresso);
+    padding: 40px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .spec-card:hover { background: #2A1208; }
+  .spec-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.4s;
+  }
+  .spec-card:hover::before { width: 100%; }
+  .spec-icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .spec-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--warm-white);
+    margin-bottom: 12px;
+  }
+  .spec-card p {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: rgba(253,249,242,0.45);
+  }
+  .spec-card .dishes {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .dish-tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(184,135,42,0.3);
+    padding: 3px 10px;
+  }
+
+  /* ── OCCASIONS ── */
+  .occasions { background: var(--dark-cream); }
+  .occasions-intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 60px;
+  }
+  .occ-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .occ-card {
+    background: var(--warm-white);
+    padding: 36px 28px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .occ-card:hover {
+    border-color: var(--sienna);
+    transform: translateY(-4px);
+  }
+  .occ-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--blush);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .occ-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--espresso);
+    margin-bottom: 10px;
+  }
+  .occ-card p {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: #5C3A20;
+  }
+
+  /* ── MILESTONE ── */
+  .milestone {
+    background: linear-gradient(135deg, var(--sienna) 0%, #5C1E08 100%);
+    text-align: center;
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .milestone::before {
+    content: '300+';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20rem;
+    color: rgba(255,255,255,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .milestone-inner { position: relative; z-index: 2; }
+  .milestone-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    color: var(--warm-white);
+    font-weight: 300;
+    line-height: 1;
+  }
+  .milestone-num sup {
+    font-size: 0.3em;
+    vertical-align: super;
+    color: var(--gold);
+  }
+  .milestone p {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(253,249,242,0.6);
+    margin-top: 12px;
+  }
+  .milestone-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.2);
+    margin: 32px auto;
+  }
+  .milestone blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-style: italic;
+    color: var(--warm-white);
+    max-width: 640px;
+    margin: 0 auto;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: var(--warm-white); }
+  .exp-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+    align-items: start;
+  }
+  .exp-list { list-style: none; }
+  .exp-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--dark-cream);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--blush);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .exp-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--espresso);
+    margin-bottom: 6px;
+  }
+  .exp-item p {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: #5C3A20;
+  }
+  .exp-right {
+    background: var(--dark-cream);
+    padding: 48px;
+  }
+  .exp-right h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
+  .process-step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+  .step-dot {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .process-step p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #3D2010;
+    padding-top: 4px;
+  }
+  .process-step p strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    margin-bottom: 2px;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--cream); }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .testi-card {
+    background: var(--warm-white);
+    padding: 36px;
+    position: relative;
+  }
+  .testi-card::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    color: var(--blush);
+    line-height: 1;
+    position: absolute;
+    top: 16px; left: 28px;
+  }
+  .testi-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: #3D2010;
+    margin-top: 32px;
+  }
+  .testi-author {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--dark-cream);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--espresso);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 60vh;
+  }
+  .contact-left {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-left .section-label { color: var(--gold); }
+  .contact-left .section-title { color: var(--warm-white); }
+  .contact-left .section-title em { color: var(--gold); }
+  .contact-tagline {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: rgba(253,249,242,0.5);
+    margin-top: 20px;
+    max-width: 360px;
+  }
+  .contact-details {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-item {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .contact-item-icon {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(184,135,42,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .contact-item span {
+    font-size: 0.85rem;
+    color: rgba(253,249,242,0.7);
+    letter-spacing: 0.05em;
+  }
+  .contact-right {
+    background: #150A04;
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-right h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--warm-white);
+    margin-bottom: 32px;
+  }
+  .field-group { margin-bottom: 20px; }
+  .field-group label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(253,249,242,0.35);
+    margin-bottom: 8px;
+  }
+  .field-group input,
+  .field-group textarea,
+  .field-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--warm-white);
+    padding: 12px 16px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .field-group input:focus,
+  .field-group textarea:focus,
+  .field-group select:focus { border-color: var(--gold); }
+  .field-group select option { background: #150A04; }
+  .field-group textarea { height: 100px; resize: none; }
+  .submit-btn {
+    width: 100%;
+    background: var(--sienna);
+    color: var(--warm-white);
+    border: none;
+    padding: 16px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.3s;
+  }
+  .submit-btn:hover { background: #A04520; }
+
+  /* ── INSTAGRAM ── */
+  .instagram { background: var(--warm-white); text-align: center; }
+  .insta-handle {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 48px;
+    text-decoration: none;
+    border: 1px solid var(--blush);
+    padding: 10px 24px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .insta-handle:hover { border-color: var(--sienna); background: var(--cream); }
+  .insta-handle .insta-icon {
+    width: 32px; height: 32px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .insta-handle span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--espresso);
+    letter-spacing: 0.05em;
+  }
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    max-width: 960px;
+    margin: 0 auto 48px;
+  }
+  .insta-cell {
+    aspect-ratio: 1;
+    background: var(--dark-cream);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+  }
+  .insta-cell img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+  }
+  .insta-cell:hover img { transform: scale(1.06); }
+  .insta-cell-overlay {
+    position: absolute; inset: 0;
+    background: rgba(30,16,8,0);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.3s;
+  }
+  .insta-cell:hover .insta-cell-overlay { background: rgba(30,16,8,0.35); }
+  .insta-cell-overlay span {
+    color: white;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .insta-cell:hover .insta-cell-overlay span { opacity: 1; }
+  /* placeholder shimmer for cells without images */
+  .insta-cell-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, var(--dark-cream) 25%, var(--blush) 50%, var(--dark-cream) 75%);
+    background-size: 200% 200%;
+    animation: shimmer 2s infinite;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    opacity: 0.4;
+  }
+  @keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .insta-cta {
+    display: inline-block;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    text-decoration: none;
+    padding: 14px 36px;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-family: 'Jost', sans-serif;
+    transition: opacity 0.3s;
+  }
+  .insta-cta:hover { opacity: 0.85; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0E0603;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(253,249,242,0.3);
+  }
+  footer p {
+    font-size: 0.7rem;
+    color: rgba(253,249,242,0.2);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    section { padding: 72px 24px; }
+    .hero { padding: 0 24px 60px; }
+    .intro { grid-template-columns: 1fr; }
+    .intro-img-frame { aspect-ratio: 4/3; }
+    .spec-grid { grid-template-columns: 1fr 1fr; }
+    .occ-grid { grid-template-columns: 1fr; }
+    .exp-layout { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .insta-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact { grid-template-columns: 1fr; }
+    .contact-left, .contact-right { padding: 60px 24px; }
+    .hero-stat-bar { gap: 28px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Danielle D'Costa</div>
+  <a href="#contact" class="nav-cta">Book a Table →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Private Catering · Bangalore</div>
+    <h1>Where Every<br>Gathering Becomes<br>a <em>Memory</em></h1>
+    <p class="hero-sub">Western cuisine crafted for homes and private events across Bangalore — from intimate brunches to celebratory feasts.</p>
+    <div class="hero-stat-bar">
+      <div class="hero-stat">
+        <span>300<sup style="font-size:0.5em;color:var(--gold)">+</sup></span>
+        <p>Catering Events</p>
+      </div>
+      <div class="hero-stat">
+        <span>5</span>
+        <p>Cuisine Styles</p>
+      </div>
+      <div class="hero-stat">
+        <span>100%</span>
+        <p>Home Kitchen</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-left">
+    <div class="intro-img-frame">
+      <div class="img-caption">
+        <strong>Danielle D'Costa</strong>
+        Home Chef · Bengaluru
+      </div>
+    </div>
+    <div class="accent-border"></div>
+  </div>
+  <div class="intro-text">
+    <p class="section-label">The Story</p>
+    <h2 class="section-title" style="margin-bottom:24px;">Cooking from the heart,<br><em>feeding with intention</em></h2>
+    <p class="lead">I'm a Bangalore-based home cook who turned a lifelong love of western cooking into something bigger — one memorable table at a time.</p>
+    <p>With over 300 private catering events across Bangalore, I bring restaurant-quality western cuisine directly to homes, terraces, and intimate gatherings. Every spread is made fresh, in my home kitchen, with real ingredients and no shortcuts.</p>
+    <p>My food is not hotel banquet food. It's the kind of cooking you remember — a slow-roasted casserole that fills the room, a high-tea spread that makes guests feel truly hosted, a BBQ that becomes the story everyone tells.</p>
+  </div>
+</section>
+
+<!-- SPECIALTIES -->
+<section class="specialties">
+  <p class="section-label">What I Cook</p>
+  <h2 class="section-title">Five ways to<br><em>feed your people well</em></h2>
+
+  <div class="spec-grid">
+    <div class="spec-card">
+      <span class="spec-icon">🥘</span>
+      <h3>Bakes & Casseroles</h3>
+      <p>Deep, slow-cooked western comfort — the kind that tastes like Sunday afternoon.</p>
+      <div class="dishes">
+        <span class="dish-tag">Shepherd's Pie</span>
+        <span class="dish-tag">Lasagna</span>
+        <span class="dish-tag">Moussaka</span>
+        <span class="dish-tag">Chicken Bake</span>
+      </div>
+    </div>
+    <div class="spec-card">
+      <span class="spec-icon">🍽</span>
+      <h3>Continental Spreads</h3>
+      <p>Elegant multi-dish buffets featuring the breadth of European cuisine.</p>
+      <div class="dishes">
+        <span class="dish-tag">Pasta Station</span>
+        <span class="dish-tag">Roasted Meats</span>
+        <span class="dish-tag">Gratins</span>
+        <span class="dish-tag">Salad Bar</span>
+      </div>
+    </div>
+    <div class="spec-card">
+      <span class="spec-icon">🔥</span>
+      <h3>BBQ & Grills</h3>
+      <p>Smoke, char, and flame — for outdoor parties that leave a lasting impression.</p>
+      <div class="dishes">
+        <span class="dish-tag">BBQ Ribs</span>
+        <span class="dish-tag">Grilled Chicken</span>
+        <span class="dish-tag">Corn on Cob</span>
+        <span class="dish-tag">Smoked Sausages</span>
+      </div>
+    </div>
+    <div class="spec-card">
+      <span class="spec-icon">🍰</span>
+      <h3>Desserts & Bakes</h3>
+      <p>The sweet finish — homemade, never store-bought, always remembered.</p>
+      <div class="dishes">
+        <span class="dish-tag">Tiramisu</span>
+        <span class="dish-tag">Tarts</span>
+        <span class="dish-tag">Brownies</span>
+        <span class="dish-tag">Pavlova</span>
+      </div>
+    </div>
+    <div class="spec-card">
+      <span class="spec-icon">☕</span>
+      <h3>High-Tea & Brunch</h3>
+      <p>Daytime elegance — curated spreads that make mornings and afternoons special.</p>
+      <div class="dishes">
+        <span class="dish-tag">Finger Sandwiches</span>
+        <span class="dish-tag">Scones</span>
+        <span class="dish-tag">Quiches</span>
+        <span class="dish-tag">Eggs Benedict</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section class="occasions">
+  <div class="occasions-intro">
+    <div>
+      <p class="section-label">When to Call Me</p>
+      <h2 class="section-title">The right<br>food for every<br><em>occasion</em></h2>
+    </div>
+    <p style="font-size:0.9rem;line-height:1.9;color:#5C3A20;padding-top:12px;">I cater to private homes across Bangalore for gatherings of all sizes — from intimate 10-person dinners to larger parties of 60+. Whatever the occasion, the food arrives fresh, styled, and ready to be served.</p>
+  </div>
+  <div class="occ-grid">
+    <div class="occ-card">
+      <div class="occ-num">01</div>
+      <h3>Birthday Parties</h3>
+      <p>A fully catered spread that lets you be a guest at your own party. Buffets, plated options, and dessert tables available.</p>
+    </div>
+    <div class="occ-card">
+      <div class="occ-num">02</div>
+      <h3>Family Get-Togethers</h3>
+      <p>Sunday lunches, festive reunions, and milestone celebrations with a western twist the whole family will love.</p>
+    </div>
+    <div class="occ-card">
+      <div class="occ-num">03</div>
+      <h3>Kitty Parties & Ladies' Lunches</h3>
+      <p>Elegant high-tea and continental spreads, beautifully plated — designed to impress without the fuss.</p>
+    </div>
+    <div class="occ-card">
+      <div class="occ-num">04</div>
+      <h3>Anniversary Dinners</h3>
+      <p>Intimate, beautifully curated menus for private celebrations — from casual dinners to formal plated affairs.</p>
+    </div>
+    <div class="occ-card">
+      <div class="occ-num">05</div>
+      <h3>Baby Showers & Bridal Brunches</h3>
+      <p>Whimsical brunch spreads and sweet tables that set the perfect tone for life's most precious milestones.</p>
+    </div>
+    <div class="occ-card">
+      <div class="occ-num">06</div>
+      <h3>Terrace & Garden Parties</h3>
+      <p>BBQ spreads and continental buffets built for Bangalore's perfect outdoor evenings — relaxed, social, delicious.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MILESTONE -->
+<section class="milestone">
+  <div class="milestone-inner">
+    <div class="milestone-num">300<sup>+</sup></div>
+    <p>Private catering events across Bangalore</p>
+    <div class="milestone-divider"></div>
+    <blockquote>"The best compliment a home cook can receive is a second invitation — and I've had over 300."</blockquote>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience">
+  <p class="section-label">What Sets This Apart</p>
+  <h2 class="section-title">The <em>Home Table</em> difference</h2>
+
+  <div class="exp-layout">
+    <ul class="exp-list">
+      <li class="exp-item">
+        <div class="exp-num">01</div>
+        <div>
+          <h4>Real home cooking — not catering food</h4>
+          <p>Every dish is made from scratch in my kitchen. No premixes, no bulk shortcuts. The flavour difference is real.</p>
+        </div>
+      </li>
+      <li class="exp-item">
+        <div class="exp-num">02</div>
+        <div>
+          <h4>Menu designed around your event</h4>
+          <p>No fixed menus forced on you. We build your spread together — around your guests, your occasion, and your budget.</p>
+        </div>
+      </li>
+      <li class="exp-item">
+        <div class="exp-num">03</div>
+        <div>
+          <h4>Bangalore-wide delivery & setup</h4>
+          <p>Food arrives hot, styled, and ready to serve. Setup assistance included so you don't lift a finger.</p>
+        </div>
+      </li>
+      <li class="exp-item">
+        <div class="exp-num">04</div>
+        <div>
+          <h4>Dietary accommodations welcome</h4>
+          <p>Vegetarian-forward spreads, egg-free bakes, and allergy-conscious planning available on request.</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="exp-right">
+      <h3>How the booking works</h3>
+      <div class="process-step">
+        <div class="step-dot">1</div>
+        <p><strong>Tell me about your event</strong>Fill the enquiry form with date, guest count, and occasion type.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">2</div>
+        <p><strong>We design your menu together</strong>A quick conversation to build the right spread for your guests and budget.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">3</div>
+        <p><strong>Confirm with advance booking</strong>Lock your date with a 30% advance. Balance due on delivery.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">4</div>
+        <p><strong>Enjoy your party</strong>Food arrives fresh, styled, and ready. You focus on your guests.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <p class="section-label">What Guests Say</p>
+  <h2 class="section-title">Stories from<br><em>satisfied tables</em></h2>
+
+  <div class="testi-grid">
+    <div class="testi-card">
+      <p>"The continental spread for my daughter's birthday was extraordinary. Guests kept asking which restaurant catered — I loved telling them it was a home kitchen."</p>
+      <div class="testi-author">Preethi R. · Koramangala · Birthday Party, 40 guests</div>
+    </div>
+    <div class="testi-card">
+      <p>"The high-tea for our kitty party was elegant, plentiful, and arrived exactly on time. The scones and finger sandwiches were a hit. Already planning the next booking."</p>
+      <div class="testi-author">Anita S. · Indiranagar · Ladies' High Tea, 18 guests</div>
+    </div>
+    <div class="testi-card">
+      <p>"We've had catering done before, but this was different. Every dish tasted homemade because it was. The BBQ spread for our terrace party was the best I've ever hosted."</p>
+      <div class="testi-author">Rahul M. · Whitefield · Garden BBQ, 55 guests</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram">
+  <p class="section-label">Follow the Kitchen</p>
+  <h2 class="section-title">Every dish,<br><em>as it happens</em></h2>
+
+  <a href="https://www.instagram.com/dan__dee__" target="_blank" rel="noopener" class="insta-handle">
+    <div class="insta-icon">📷</div>
+    <span>@dan__dee__</span>
+  </a>
+
+  <!--
+  ══════════════════════════════════════════════════════
+  LIVE INSTAGRAM FEED — activate in 2 minutes:
+  1. Go to behold.so → Sign up free → Connect @dan__dee__
+  2. Create a widget → copy your Widget ID
+  3. Replace the grid below with:
+
+  <div id="behold-widget-YOUR_WIDGET_ID"></div>
+  <script src="https://w.behold.so/widget.js" type="module"></script>
+  <script>
+    window.BeholdWidget = window.BeholdWidget || {widgets: []};
+    window.BeholdWidget.widgets.push({
+      widgetId: 'YOUR_WIDGET_ID',
+      container: 'behold-widget-YOUR_WIDGET_ID'
+    });
+  </script>
+
+  Until then, the grid below links visitors to your Instagram.
+  ══════════════════════════════════════════════════════
+  -->
+
+  <div class="insta-grid">
+    <!-- Each cell links to your Instagram. Once you have Behold set up, replace this entire grid. -->
+    <a href="https://www.instagram.com/dan__dee__" target="_blank" class="insta-cell">
+      <div class="insta-cell-placeholder">🥘</div>
+      <div class="insta-cell-overlay"><span>♥</span></div>
+    </a>
+    <a href="https://www.instagram.com/dan__dee__" target="_blank" class="insta-cell">
+      <div class="insta-cell-placeholder">🍰</div>
+      <div class="insta-cell-overlay"><span>♥</span></div>
+    </a>
+    <a href="https://www.instagram.com/dan__dee__" target="_blank" class="insta-cell">
+      <div class="insta-cell-placeholder">🔥</div>
+      <div class="insta-cell-overlay"><span>♥</span></div>
+    </a>
+    <a href="https://www.instagram.com/dan__dee__" target="_blank" class="insta-cell">
+      <div class="insta-cell-placeholder">🍽</div>
+      <div class="insta-cell-overlay"><span>♥</span></div>
+    </a>
+    <a href="https://www.instagram.com/dan__dee__" target="_blank" class="insta-cell">
+      <div class="insta-cell-placeholder">☕</div>
+      <div class="insta-cell-overlay"><span>♥</span></div>
+    </a>
+    <a href="https://www.instagram.com/dan__dee__" target="_blank" class="insta-cell">
+      <div class="insta-cell-placeholder">🧁</div>
+      <div class="insta-cell-overlay"><span>♥</span></div>
+    </a>
+    <a href="https://www.instagram.com/dan__dee__" target="_blank" class="insta-cell">
+      <div class="insta-cell-placeholder">🥗</div>
+      <div class="insta-cell-overlay"><span>♥</span></div>
+    </a>
+    <a href="https://www.instagram.com/dan__dee__" target="_blank" class="insta-cell">
+      <div class="insta-cell-placeholder">🍖</div>
+      <div class="insta-cell-overlay"><span>♥</span></div>
+    </a>
+  </div>
+
+  <a href="https://www.instagram.com/dan__dee__" target="_blank" class="insta-cta">
+    See All Posts on Instagram →
+  </a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <p class="section-label">Book Your Event</p>
+    <h2 class="section-title">Let's plan<br>your <em>table</em></h2>
+    <p class="contact-tagline">Reach out at least 5–7 days before your event for best availability. Weekends book fast — enquire early.</p>
+    <div class="contact-details">
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <span>Serving all of Bangalore</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <span>+91 98450 10371</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📧</div>
+        <span>danielledcosta05@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📅</div>
+        <span>Mon – Sat, 10am – 7pm</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <h3>Tell me about your event</h3>
+
+    <div class="field-group">
+      <label>Your Name</label>
+      <input type="text" placeholder="Priya Sharma">
+    </div>
+    <div class="field-group">
+      <label>Phone / WhatsApp</label>
+      <input type="tel" placeholder="+91 98450 10371">
+    </div>
+    <div class="field-group">
+      <label>Event Type</label>
+      <select>
+        <option>Birthday Party</option>
+        <option>High Tea / Brunch</option>
+        <option>Garden / Terrace BBQ</option>
+        <option>Family Get-Together</option>
+        <option>Anniversary Dinner</option>
+        <option>Baby Shower / Bridal Brunch</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field-group">
+      <label>Approx. Guest Count & Date</label>
+      <input type="text" placeholder="e.g. 30 guests · 15 July 2025">
+    </div>
+    <div class="field-group">
+      <label>Anything else?</label>
+      <textarea placeholder="Dietary needs, cuisine preferences, budget range..."></textarea>
+    </div>
+    <button class="submit-btn">Send Enquiry →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Danielle D'Costa · Bangalore</div>
+  <p>300+ events. One home kitchen. Entirely yours.</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919845010371?text=Hi%20Danielle!%20I%20found%20your%20portfolio%20and%20would%20like%20to%20enquire%20about%20catering%20for%20my%20event." 
+   target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.853L.057 23.571a.75.75 0 0 0 .92.92l5.637-1.498A11.93 11.93 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.73 9.73 0 0 1-4.962-1.357l-.355-.212-3.683.978.993-3.598-.232-.372A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
+  </svg>
+</a>
+
+<style>
+.wa-float {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 58px; height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  z-index: 999;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: waPulse 2.5s infinite;
+}
+.wa-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+  animation: none;
+}
+.wa-float svg { width: 28px; height: 28px; }
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 4px 32px rgba(37,211,102,0.7); }
+}
+</style>
+
+</body>
+</html>
