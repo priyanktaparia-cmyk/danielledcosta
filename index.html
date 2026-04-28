@@ -280,7 +280,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    max-height: 120px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(184,135,42,0.3) transparent;
   }
+  .spec-card .dishes::-webkit-scrollbar { width: 3px; }
+  .spec-card .dishes::-webkit-scrollbar-thumb { background: rgba(184,135,42,0.3); border-radius: 2px; }
   .dish-tag {
     font-size: 0.62rem;
     letter-spacing: 0.12em;
@@ -574,8 +580,8 @@
   .field-group textarea,
   .field-group select {
     width: 100%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
     color: var(--warm-white);
     padding: 12px 16px;
     font-family: 'Jost', sans-serif;
@@ -583,11 +589,16 @@
     font-weight: 300;
     outline: none;
     transition: border-color 0.3s;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
   }
+  .field-group input::placeholder,
+  .field-group textarea::placeholder { color: rgba(253,249,242,0.3); }
   .field-group input:focus,
   .field-group textarea:focus,
-  .field-group select:focus { border-color: var(--gold); }
-  .field-group select option { background: #150A04; }
+  .field-group select:focus { border-color: var(--gold); background: rgba(255,255,255,0.11); }
+  .field-group select option { background: #150A04; color: var(--warm-white); }
   .field-group textarea { height: 100px; resize: none; }
   .submit-btn {
     width: 100%;
@@ -604,6 +615,85 @@
     transition: background 0.3s;
   }
   .submit-btn:hover { background: #A04520; }
+
+
+  /* ── MENU BUILDER ── */
+  .menu-builder { background: var(--espresso); }
+  .menu-builder .section-label { color: var(--gold); }
+  .menu-builder .section-title { color: var(--warm-white); }
+  .menu-builder .section-title em { color: var(--gold); }
+  .menu-builder .section-sub {
+    font-size: 0.85rem; color: rgba(253,249,242,0.5);
+    line-height: 1.8; margin-top: 12px; max-width: 560px;
+  }
+  .menu-tabs {
+    display: flex; gap: 0; margin-top: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .menu-tabs::-webkit-scrollbar { display: none; }
+  .menu-tab {
+    padding: 14px 22px; font-size: 0.68rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(253,249,242,0.38);
+    cursor: pointer; border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+    white-space: nowrap; background: none; border-top: none;
+    border-left: none; border-right: none; font-family: 'Jost', sans-serif;
+  }
+  .menu-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .menu-tab:hover { color: rgba(253,249,242,0.7); }
+  .menu-panel { display: none; padding-top: 36px; }
+  .menu-panel.active { display: block; }
+  .menu-category {
+    margin-bottom: 32px; padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .menu-category:last-child { border-bottom: none; }
+  .menu-cat-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+  .menu-cat-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--warm-white); font-weight: 400; }
+  .menu-pick-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(184,135,42,0.35); padding: 3px 10px; }
+  .menu-items { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .menu-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 13px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.2s, background 0.2s; user-select: none;
+  }
+  .menu-item:hover { border-color: rgba(184,135,42,0.3); background: rgba(255,255,255,0.03); }
+  .menu-item.selected { border-color: var(--gold); background: rgba(184,135,42,0.09); }
+  .menu-check {
+    width: 15px; height: 15px; border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px; flex-shrink: 0; display: flex;
+    align-items: center; justify-content: center; transition: all 0.2s;
+    font-size: 0.6rem; color: white;
+  }
+  .menu-item.selected .menu-check { background: var(--gold); border-color: var(--gold); content: '✓'; }
+  .menu-item.selected .menu-check::after { content: '✓'; }
+  .veg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .veg-dot.veg { background: #4CAF50; }
+  .veg-dot.nonveg { background: #E57373; }
+  .menu-item-name { font-size: 0.78rem; color: rgba(253,249,242,0.6); line-height: 1.35; transition: color 0.2s; }
+  .menu-item.selected .menu-item-name { color: var(--warm-white); }
+  .menu-legend { display: flex; gap: 20px; margin-bottom: 28px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.68rem; letter-spacing: 0.1em; color: rgba(253,249,242,0.4); }
+  .menu-summary {
+    background: rgba(184,135,42,0.08); border: 1px solid rgba(184,135,42,0.22);
+    padding: 20px 24px; margin-top: 40px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .summary-text { font-size: 0.8rem; color: rgba(253,249,242,0.55); line-height: 1.6; }
+  .summary-count { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--gold); display: block; }
+  .proceed-btn {
+    background: #25D366; color: white; border: none; padding: 13px 28px;
+    font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em;
+    text-transform: uppercase; cursor: pointer; transition: background 0.3s;
+  }
+  .proceed-btn:hover { background: #1da851; }
+  @media (max-width: 700px) {
+    .menu-items { grid-template-columns: 1fr; }
+    .menu-tab { padding: 12px 14px; font-size: 0.62rem; }
+  }
 
   /* ── INSTAGRAM ── */
   .instagram { background: var(--warm-white); text-align: center; }
@@ -807,61 +897,107 @@
   <h2 class="section-title">Five ways to<br><em>feed your people well</em></h2>
 
   <div class="spec-grid">
+
     <div class="spec-card">
       <span class="spec-icon">🥘</span>
       <h3>Bakes & Casseroles</h3>
-      <p>Deep, slow-cooked western comfort — the kind that tastes like Sunday afternoon.</p>
+      <p>Slow-cooked, oven-pulled western comfort food — Shepherd's Pie, Moussaka, rich gratins straight from a home kitchen.</p>
       <div class="dishes">
         <span class="dish-tag">Shepherd's Pie</span>
-        <span class="dish-tag">Lasagna</span>
+        <span class="dish-tag">Fisherman's Pie</span>
+        <span class="dish-tag">Lasagna (V/NV)</span>
         <span class="dish-tag">Moussaka</span>
-        <span class="dish-tag">Chicken Bake</span>
+        <span class="dish-tag">Chicken Casserole</span>
+        <span class="dish-tag">Gratin Dauphinois</span>
+        <span class="dish-tag">Chicken Cafreal</span>
+        <span class="dish-tag">Coq au Vin</span>
+        <span class="dish-tag">Boeuf Bourguignon</span>
+        <span class="dish-tag">Meatloaf</span>
+        <span class="dish-tag">Chicken Fricassee</span>
+        <span class="dish-tag">Ratatouille</span>
       </div>
     </div>
+
     <div class="spec-card">
       <span class="spec-icon">🍽</span>
       <h3>Continental Spreads</h3>
-      <p>Elegant multi-dish buffets featuring the breadth of European cuisine.</p>
+      <p>Full European buffet spreads — appetizers, mains, salads and desserts drawn from French, Italian and Goan traditions.</p>
       <div class="dishes">
-        <span class="dish-tag">Pasta Station</span>
-        <span class="dish-tag">Roasted Meats</span>
-        <span class="dish-tag">Gratins</span>
-        <span class="dish-tag">Salad Bar</span>
+        <span class="dish-tag">Roast Chicken</span>
+        <span class="dish-tag">Pork Chops</span>
+        <span class="dish-tag">Tomato & Boccincini Skewers</span>
+        <span class="dish-tag">Gougères</span>
+        <span class="dish-tag">Focaccia</span>
+        <span class="dish-tag">Cheese Stuffed Mushrooms</span>
+        <span class="dish-tag">Panzanella Salad</span>
+        <span class="dish-tag">Russian Salad</span>
+        <span class="dish-tag">Pasta Salad</span>
+        <span class="dish-tag">Roasted Tomato Tart</span>
+        <span class="dish-tag">Spicy Lamb Chops</span>
+        <span class="dish-tag">Creole Butter Garlic Prawns</span>
       </div>
     </div>
+
     <div class="spec-card">
       <span class="spec-icon">🔥</span>
       <h3>BBQ & Grills</h3>
-      <p>Smoke, char, and flame — for outdoor parties that leave a lasting impression.</p>
+      <p>Smoke, char and flame — meats, seafood and bites built for terrace parties and outdoor evenings.</p>
       <div class="dishes">
-        <span class="dish-tag">BBQ Ribs</span>
-        <span class="dish-tag">Grilled Chicken</span>
-        <span class="dish-tag">Corn on Cob</span>
-        <span class="dish-tag">Smoked Sausages</span>
+        <span class="dish-tag">Pork Ribs</span>
+        <span class="dish-tag">BBQ Chicken Wings</span>
+        <span class="dish-tag">Meatballs in BBQ Sauce</span>
+        <span class="dish-tag">Baked Fish Parcels</span>
+        <span class="dish-tag">Sticky Chicken Wings</span>
+        <span class="dish-tag">Balinese Chicken Skewers</span>
+        <span class="dish-tag">Chicken Satay</span>
+        <span class="dish-tag">Sticky Pork Ribs</span>
+        <span class="dish-tag">Garlic Prawns</span>
+        <span class="dish-tag">Sausages in BBQ Sauce</span>
+        <span class="dish-tag">Potato Chops</span>
+        <span class="dish-tag">Korean Chicken Wings</span>
       </div>
     </div>
+
     <div class="spec-card">
       <span class="spec-icon">🍰</span>
       <h3>Desserts & Bakes</h3>
-      <p>The sweet finish — homemade, never store-bought, always remembered.</p>
+      <p>Every dessert made entirely from scratch — no shortcuts, no store-bought — from Pannacotta to self-saucing chocolate pudding.</p>
       <div class="dishes">
-        <span class="dish-tag">Tiramisu</span>
-        <span class="dish-tag">Tarts</span>
-        <span class="dish-tag">Brownies</span>
-        <span class="dish-tag">Pavlova</span>
+        <span class="dish-tag">New York Baked Cheesecake</span>
+        <span class="dish-tag">Strawberry Entremets</span>
+        <span class="dish-tag">Pannacotta</span>
+        <span class="dish-tag">Self Saucing Chocolate Pudding</span>
+        <span class="dish-tag">Chocolate Mousse</span>
+        <span class="dish-tag">Apple Tart Tatin</span>
+        <span class="dish-tag">Fruit Tarts</span>
+        <span class="dish-tag">Chocolate Ganache Cups</span>
+        <span class="dish-tag">Lemon Cheesecake</span>
+        <span class="dish-tag">Coconut Lime Ice Cream</span>
+        <span class="dish-tag">Orange Caramel Custard</span>
+        <span class="dish-tag">Mini Cherry Tarts</span>
       </div>
     </div>
+
     <div class="spec-card">
       <span class="spec-icon">☕</span>
       <h3>High-Tea & Brunch</h3>
-      <p>Daytime elegance — curated spreads that make mornings and afternoons special.</p>
+      <p>Curated daytime spreads — from delicate finger sandwiches and scones to quiches, bao buns and fresh-pressed juices.</p>
       <div class="dishes">
-        <span class="dish-tag">Finger Sandwiches</span>
-        <span class="dish-tag">Scones</span>
-        <span class="dish-tag">Quiches</span>
-        <span class="dish-tag">Eggs Benedict</span>
+        <span class="dish-tag">Cheese Scones</span>
+        <span class="dish-tag">Mini Quiche</span>
+        <span class="dish-tag">Cucumber & Cream Cheese Sandwich</span>
+        <span class="dish-tag">Mozzarella & Tomato Sandwich</span>
+        <span class="dish-tag">Pita Bites with Felafel</span>
+        <span class="dish-tag">Hummus with Lavash</span>
+        <span class="dish-tag">Pizza Bites</span>
+        <span class="dish-tag">Bao Buns with Paneer</span>
+        <span class="dish-tag">Vietnamese Rice Paper Rolls</span>
+        <span class="dish-tag">Paneer Wraps</span>
+        <span class="dish-tag">Banana Walnut Bread</span>
+        <span class="dish-tag">Tarts with Ricotta & Roasted Tomato</span>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -998,6 +1134,1187 @@
   </div>
 </section>
 
+
+<!-- MENU BUILDER -->
+<section class="menu-builder" id="menu">
+  <p class="section-label">Design Your Spread</p>
+  <h2 class="section-title">Build your <em>perfect menu</em></h2>
+  <p class="section-sub">Pick a menu style, select your dishes, and send directly to Danielle on WhatsApp — she'll confirm availability and pricing within the hour.</p>
+
+  <div class="menu-legend">
+    <div class="legend-item"><span class="veg-dot veg"></span> Vegetarian</div>
+    <div class="legend-item"><span class="veg-dot nonveg"></span> Non-Vegetarian</div>
+  </div>
+
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="switchTab(this,'lunch')">🍽 Lunch</button>
+    <button class="menu-tab" onclick="switchTab(this,'midday')">☕ Mid-Day / Eve Tea</button>
+    <button class="menu-tab" onclick="switchTab(this,'asian')">🥢 Asian</button>
+    <button class="menu-tab" onclick="switchTab(this,'continental')">🥩 Continental</button>
+    <button class="menu-tab" onclick="switchTab(this,'manglorean')">🌶 Nona's Manglorean</button>
+  </div>
+
+  <div class="menu-panel active" id="panel-lunch">
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Appetizers — Vegetarian</span>
+        <span class="menu-pick-label">Pick 3</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Paneer Skewers</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Olive & Cheese Skewers</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Potato Tarts</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Potato & Cheese Croquettes</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Tarts with Ricotta & Roasted Tomato</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Mini Quiche</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Mushroom Cones</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Appetizers — Non Vegetarian</span>
+        <span class="menu-pick-label">Pick 2</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Skewers – Greek</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Skewers – Thai</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Burgers Mini</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Wraps</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Wanton Cups – Chicken Salad / Prawn Cocktail</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Potato with Chicken Stuffing</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Bao Buns with Chicken</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Meat Balls in BBQ Sauce</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Tuna Cutlets</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Choux Buns with Chicken Salad</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Breads</span>
+        <span class="menu-pick-label">Pick 2</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Burgers Veg</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Paneer Wraps</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Pan Bread with Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Pita Bites with Felafel</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Hummus with Lavash</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Wanton Cups with Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Vietnamese Rice Paper Rolls</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Bao Buns with Paneer / Mushroom</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Garlic Bread</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Juices</span>
+        <span class="menu-pick-label">Pick 2</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Guava</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Watermelon</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Lime Soda</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Lime Mint Water</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Mains</span>
+        <span class="menu-pick-label">Pick 2</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Rice Bowl</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Green Thai Curry (V/NV)</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Red Thai Curry (V/NV)</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Black Dhal</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Mangalore Chicken Curry</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Herbed Rice</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Fried Rice with Chili Sauce</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Lasagne</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Mini Fish Bake</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Mini Shepherd's Pie</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Noodle Cups</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Salad</span>
+        <span class="menu-pick-label">Pick 2</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Watermelon & Feta</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Tomato Bocconcini Skewers</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Pasta Salad Cups</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Paw Paw Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Greek Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Apple, Walnut & Feta Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Mediterranean Chickpea Salad</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Dessert</span>
+        <span class="menu-pick-label">Pick 2</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Pannacotta</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Cheesecake – Lemon</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Chocolate Ganache Cups</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Fruit Cups</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Flavoured Yogurt</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Strawberry Cups</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Mini Cherry Tarts</span>
+        </div>
+      </div>
+    </div></div>
+  <div class="menu-panel" id="panel-midday">
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Appetizers — Vegetarian</span>
+        <span class="menu-pick-label">Pick 3</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Paneer Skewers</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Olive & Cheese Skewers</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Potato Tarts</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Potato & Cheese Croquettes</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Tarts with Ricotta & Roasted Tomato</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Mini Quiche</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Mushroom Cones</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Cheese Scones</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Pizza Bites</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Appetizers — Non Vegetarian</span>
+        <span class="menu-pick-label">Pick 2</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Skewers – Greek</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Skewers – Thai</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Burgers Mini</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Wraps</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Wanton Cups – Chicken Salad / Prawn</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Sausages in BBQ Sauce</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Potato with Chicken Stuffing</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Tuna Cutlets</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Choux Buns with Chicken Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken & Mayo Sandwich</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Egg & Mayo Sandwich</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Open Sandwich with Cold Meats</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Breads</span>
+        <span class="menu-pick-label">Pick 2</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Burgers Veg</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Paneer Wraps</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Pan Bread with Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Pita Bites with Felafel</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Hummus with Lavash</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Wanton Cups with Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Garlic Bread</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Cucumber & Cream Cheese Sandwich</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Mozzarella & Tomato Sandwich</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Open Sandwich – Ricotta & Roasted Cherry Tomato</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Juices</span>
+        <span class="menu-pick-label">Pick 2</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Guava</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Watermelon</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Lime Soda</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Lime Mint Water</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Orange</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Dessert</span>
+        <span class="menu-pick-label">Pick 2</span>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Banana Walnut Bread</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Cheesecake – Lemon</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Chocolate Ganache Cups</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Fruit Cups</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Lemon Cake</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Strawberry Cups</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Mini Cherry Tarts</span>
+        </div>
+      </div>
+    </div></div>
+  <div class="menu-panel" id="panel-asian">
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Appetizers</span>
+        
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Balinese Chicken Skewers</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Satay</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Sticky Chicken Wings</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Korean Chicken Wings</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Laab in Lettuce Cups</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Bao Buns (Pork / Chicken)</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Rice Paper Springrolls (Pork)</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Sticky Pork Ribs</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Garlic Prawns</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Prawn Cocktail in Wonton Cups</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Vietnamese Rice Paper Rolls</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Mushroom Tofu Skewers</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Tofu Balls</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Salads</span>
+        
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Raw Papaya Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Pineapple Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Apple Walnut Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Grilled Pork Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Thai Beef Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Seafood Salad</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Mains</span>
+        
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Thai Red Curry</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Thai Green Curry</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Taiwanese 3 Cup Chicken</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Burmese Khowsuey</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Thai Steamed Fish</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Korean Pork Chops</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Caramelised Pork</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Dessert</span>
+        
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Lemon Pudding</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Coconut Lime Ice Cream with Caramelized Pineapple</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Orange Caramel Custard</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Mango Fruit Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Lemon Cheesecake</span>
+        </div>
+      </div>
+    </div></div>
+  <div class="menu-panel" id="panel-continental">
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Appetizers</span>
+        
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Cheese Stuffed Mushrooms</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Focaccia</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Gougères</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Roast Potatoes</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Roasted Tomato Tart</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Tomato & Boccincini Skewers</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Mini Mushroom Tarts</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">BBQ Chicken Wings</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Meatballs in BBQ Sauce</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Pork Ribs</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Creole Butter Garlic Prawns</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Spicy Lamb Chops</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Baked Fish Parcels</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Potato Chops</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Salads</span>
+        
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Watermelon Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Tossed Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Panzanella Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Russian Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Potato Salad</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Pasta Salad</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Mains</span>
+        
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Lasagna (Veg / Chicken / Meat)</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Gratin Dauphinois</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Ratatouille</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Roast Chicken</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Casserole</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Cafreal</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Coq au Vin</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Shepherd's Pie</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Fisherman's Pie</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Meatloaf</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Fricassee</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Moussaka</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Pork Chops</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Boeuf Bourguignon</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Dessert</span>
+        
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">New York Baked Cheesecake</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Strawberry Entremets</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Pannacotta</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Self Saucing Chocolate Pudding</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Chocolate Mousse</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Apple Tart Tatin / Crumble</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot veg"></span>
+          <span class="menu-item-name">Fruit Tarts</span>
+        </div>
+      </div>
+    </div></div>
+  <div class="menu-panel" id="panel-manglorean">
+    <p style="font-size:0.82rem;color:rgba(253,249,242,0.4);margin-bottom:24px;line-height:1.7;">Traditional Manglorean recipes passed down through generations. Pricing on request — contact Danielle directly.</p>
+    
+    <div class="menu-category">
+      <div class="menu-cat-header">
+        <span class="menu-cat-title">Nona's Manglorean Mains</span>
+        
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Wedding Mutton Curry</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Simple Mutton Curry</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Mutton Green Curry</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Mutton Biryani</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Sukka</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Chicken Curry</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Stuffed Roast Chicken</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Indas Chicken / Mutton / Pork</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Vindaloo</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Ball Curry with Coconut Rice</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Pork Sorpotel</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Pomfret Steamed</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Fish Cutlets</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Prawn Biryani</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Masala Stuffed Steamed Fish</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-check"></div>
+          <span class="veg-dot nonveg"></span>
+          <span class="menu-item-name">Fish Bafadh with Coconut Milk</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-summary">
+    <div class="summary-text">
+      <span class="summary-count" id="sel-count">0 dishes selected</span>
+      Select your dishes above, then tap to send to Danielle on WhatsApp
+    </div>
+    <button class="proceed-btn" onclick="sendMenuToWhatsApp()">
+      📲 Send My Selection to Danielle →
+    </button>
+  </div>
+</section>
+
+<script>
+function switchTab(btn, name) {
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function updateCount() {
+  const n = document.querySelectorAll('.menu-item.selected').length;
+  document.getElementById('sel-count').textContent = n + (n === 1 ? ' dish selected' : ' dishes selected');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.menu-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      item.classList.toggle('selected');
+      var check = item.querySelector('.menu-check');
+      if (check) check.textContent = item.classList.contains('selected') ? '✓' : '';
+      updateCount();
+    });
+  });
+});
+
+function sendMenuToWhatsApp() {
+  const selected = [...document.querySelectorAll('.menu-item.selected')]
+    .map(el => '• ' + el.querySelector('.menu-item-name').textContent.trim());
+  if (selected.length === 0) {
+    alert('Please select at least one dish first!');
+    return;
+  }
+  const activeTab = document.querySelector('.menu-tab.active').textContent.trim();
+  const msg = encodeURIComponent(
+    'Hi Danielle! I found your portfolio and would like to enquire about catering.\n\n' +
+    'Menu Style: ' + activeTab + '\n\n' +
+    'Dishes I am interested in:\n' + selected.join('\n') +
+    '\n\nPlease share your availability and pricing. Thank you!'
+  );
+  window.open('https://wa.me/919845010371?text=' + msg, '_blank');
+}
+</script>
+
+
 <!-- INSTAGRAM -->
 <section class="instagram">
   <p class="section-label">Follow the Kitchen</p>
@@ -1112,80 +2429,88 @@
   </div>
 
   <div class="contact-right">
-    <h3>Tell me about your event</h3>
-
-    <!-- ═══════════════════════════════════════════════
-    FORMSPREE SETUP (5 minutes, free):
-    1. Go to formspree.io on your phone
-    2. Sign up with danielledcosta05@gmail.com
-    3. Click "+ New Form" → name it "Catering Enquiry"
-    4. Copy the Form ID shown (looks like: xrgvkpqz)
-    5. Replace YOUR_FORM_ID below with that ID
-    6. Save & re-upload index.html to GitHub
-    All enquiries will arrive in your Gmail instantly.
-    ═══════════════════════════════════════════════ -->
-
-    <form action="https://formspree.io/f/YOUR_FORM_ID"
-          method="POST"
-          id="enquiry-form">
-
-      <input type="hidden" name="_replyto" value="danielledcosta05@gmail.com">
-      <input type="hidden" name="_subject" value="New Catering Enquiry from your website!">
-
-      <div class="field-group">
-        <label>Your Name</label>
-        <input type="text" name="name" placeholder="Priya Sharma" required>
-      </div>
-      <div class="field-group">
-        <label>Phone / WhatsApp</label>
-        <input type="tel" name="phone" placeholder="+91 98XXX XXXXX" required>
-      </div>
-      <div class="field-group">
-        <label>Event Type</label>
-        <select name="event_type">
-          <option>Birthday Party</option>
-          <option>High Tea / Brunch</option>
-          <option>Garden / Terrace BBQ</option>
-          <option>Family Get-Together</option>
-          <option>Anniversary Dinner</option>
-          <option>Baby Shower / Bridal Brunch</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="field-group">
-        <label>Approx. Guest Count & Date</label>
-        <input type="text" name="guests_and_date" placeholder="e.g. 30 guests · 15 July 2025">
-      </div>
-      <div class="field-group">
-        <label>Anything else?</label>
-        <textarea name="message" placeholder="Dietary needs, cuisine preferences, budget range..."></textarea>
-      </div>
-      <button type="submit" class="submit-btn">Send Enquiry →</button>
-
-      <!-- Success message (shown after submission) -->
-      <p id="form-success" style="display:none;color:#25D366;font-size:0.85rem;margin-top:16px;letter-spacing:0.05em;">
-        ✓ Enquiry sent! Danielle will be in touch soon.
-      </p>
-    </form>
-
-    <script>
-      const form = document.getElementById('enquiry-form');
-      const success = document.getElementById('form-success');
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const data = new FormData(form);
-        const res = await fetch(form.action, {
-          method: 'POST', body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-          form.reset();
-          success.style.display = 'block';
-        }
-      });
-    </script>
+    <h3>Send your enquiry to Danielle</h3>
+    <div class="field-group">
+      <label>Your Name</label>
+      <input type="text" id="f-name" placeholder="Priya Sharma">
+    </div>
+    <div class="field-group">
+      <label>Phone / WhatsApp</label>
+      <input type="tel" id="f-phone" placeholder="+91 98XXX XXXXX">
+    </div>
+    <div class="field-group">
+      <label>Event Type</label>
+      <select id="f-event">
+        <option>Birthday Party</option>
+        <option>High Tea / Brunch</option>
+        <option>Garden / Terrace BBQ</option>
+        <option>Family Get-Together</option>
+        <option>Anniversary Dinner</option>
+        <option>Baby Shower / Bridal Brunch</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field-group">
+      <label>Approx. Guest Count & Date</label>
+      <input type="text" id="f-guests" placeholder="e.g. 30 guests · 15 July 2025">
+    </div>
+    <div class="field-group">
+      <label>Anything else?</label>
+      <textarea id="f-msg" placeholder="Dietary needs, cuisine preferences, budget range..."></textarea>
+    </div>
+    <button class="submit-btn" onclick="submitWhatsApp()" style="background:#25D366;margin-bottom:10px;">
+      📲 Send via WhatsApp (Instant)
+    </button>
+    <button class="submit-btn" onclick="submitEmail()">
+      ✉️ Send via Email
+    </button>
+    <p style="font-size:0.68rem;color:rgba(253,249,242,0.28);margin-top:14px;line-height:1.7;letter-spacing:0.04em;">
+      WhatsApp opens with your details pre-filled · Email opens your mail app
+    </p>
   </div>
 </section>
+
+<script>
+function getFormData() {
+  return {
+    name: document.getElementById('f-name').value || 'Not provided',
+    phone: document.getElementById('f-phone').value || 'Not provided',
+    event: document.getElementById('f-event').value,
+    guests: document.getElementById('f-guests').value || 'Not provided',
+    msg: document.getElementById('f-msg').value || ''
+  };
+}
+function getMenuSelections() {
+  const dishes = [...document.querySelectorAll('.menu-item.selected')]
+    .map(el => '• ' + el.querySelector('.menu-item-name').textContent.trim());
+  return dishes.length ? '\n\nDish selections:\n' + dishes.join('\n') : '';
+}
+function submitWhatsApp() {
+  const d = getFormData();
+  const msg = encodeURIComponent(
+    'Hi Danielle! I would like to enquire about catering.\n\n' +
+    'Name: ' + d.name + '\nPhone: ' + d.phone +
+    '\nEvent: ' + d.event + '\nGuests & Date: ' + d.guests +
+    getMenuSelections() +
+    (d.msg ? '\n\nNotes: ' + d.msg : '') +
+    '\n\nPlease share availability and pricing!'
+  );
+  window.open('https://wa.me/919845010371?text=' + msg, '_blank');
+}
+function submitEmail() {
+  const d = getFormData();
+  const body = encodeURIComponent(
+    'Hi Danielle,\n\nI would like to enquire about catering.\n\n' +
+    'Name: ' + d.name + '\nPhone: ' + d.phone +
+    '\nEvent: ' + d.event + '\nGuests & Date: ' + d.guests +
+    getMenuSelections() +
+    (d.msg ? '\n\nNotes: ' + d.msg : '') +
+    '\n\nThank you!'
+  );
+  window.location.href = 'mailto:danielledcosta05@gmail.com?subject=' +
+    encodeURIComponent('Catering Enquiry – ' + d.event) + '&body=' + body;
+}
+</script>
 
 <!-- FOOTER -->
 <footer>
